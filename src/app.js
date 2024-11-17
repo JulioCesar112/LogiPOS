@@ -18,17 +18,27 @@ const db = require("./config/database")
 */
 const userRouter = require("./routes/userRouter")
 const authRouter = require("./routes/authRouter")
+const categoryRouter = require("./routes/categoryRoute")
+const productRouter = require("./routes/productRouter")
+const saleRouter = require("./routes/saleRouter")
 const initModels = require("./models/initModels")
 
 const app = express()
+const apiRouter = express.Router()
 
 // Middleware
 app.use(cors())
 app.use(express.json());
 
 // Rutes
-app.use("/api/v1/users", userRouter)
-app.use("/api/v1/auth", authRouter)
+apiRouter.use("/auth",authRouter)
+apiRouter.use("/categories", categoryRouter)
+apiRouter.use("/users", userRouter)
+apiRouter.use("/products",productRouter),
+apiRouter.use("/sales", saleRouter)
+
+app.use("/api/v1",apiRouter)
+
 
 // Connection to the database
 const initDatabase = async () => {

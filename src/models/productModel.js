@@ -1,6 +1,6 @@
 const db = require("../config/database")
 const {DataTypes} =require("sequelize")
-const category = require("./categorieModel")
+const Category = require("./categoryModel")
 
 const Products = db.define("products",{
   id: {
@@ -29,13 +29,18 @@ const Products = db.define("products",{
       min:0
     }
   },
-  CategoryId:{
+  stock:{
+    type:DataTypes.INTEGER,
+    allowNull:false,
+    defaultValue:0
+  },
+  categoryId:{
     type:DataTypes.INTEGER,
     allowNull:false,
     field:"category_id",
     references:{
       key:"id",
-      model:category
+      model:Category
     }
   }
 },{

@@ -16,4 +16,4 @@ const Category = db.define("category", {
   timestamps: false
 })
 
-module.exports = category
+module.exports = Category

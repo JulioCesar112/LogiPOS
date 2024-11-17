@@ -1,8 +1,8 @@
 const db =require("../config/database")
 const {DataTypes} = require("sequelize") 
-const User = require("./userModel")
+const Users = require("./userModel")
 
-const Sale = db.define("sale",{
+const Sales = db.define("sales",{
   id :{
     type:DataTypes.UUID,
     allowNull:true,
@@ -22,18 +22,27 @@ const Sale = db.define("sale",{
     defaultValue:DataTypes.NOW
   },
   paymentMethod:{
-    type:DataTypes.STRING,
-    allowNull:false
+    type:DataTypes.ENUM("cash","card"),
+    allowNull:false,
+    defaultValue:"cash"
+
+  },
+  status:{
+    type:DataTypes.ENUM("pending", "paid","canceled"),
+    allowNull:false,
+    defaultValue:"pending"
   },
   userId:{
-    tupe:DataTypes.UUID,
+    type:DataTypes.UUID,
     allowNull:false,
     field:"user_id",
     references:{
-      model: User,
-      key:"id"
+      key:"id",
+      model: Users,
     }
   }
+},{
+  timestamps:false
 })
 
-module.exports = Sale
+module.exports = Sales
