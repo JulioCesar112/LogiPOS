@@ -45,7 +45,7 @@ const initDatabase = async () => {
   try {
     await db.authenticate();
     console.log('Connection to the database has been established successfully.');
-    await db.sync({ alter: true });
+    await db.sync({ alter: false });
     console.log("DB Synced");
     await initModels()
   } catch (err) {
@@ -54,8 +54,7 @@ const initDatabase = async () => {
 };
 
 initDatabase()
-
-
+//app listen
 app.listen(config.port, () => {
-  console.log(`Server started at port ${config.port}`)
+  console.log(`Server Started At Port: ${config.port}`)
 })

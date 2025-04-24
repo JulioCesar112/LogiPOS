@@ -112,4 +112,4 @@ module.exports = {
   deleteUserById,
   getUserByEmail,
   updateUserRoleService
-};
+}
