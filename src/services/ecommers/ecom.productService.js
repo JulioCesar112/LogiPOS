@@ -1,0 +1,1 @@
+const ProductController = require(".../constrollers/");

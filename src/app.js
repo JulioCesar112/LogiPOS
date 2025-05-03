@@ -32,6 +32,7 @@ app.use(express.json());
 
 // Rutes
 apiRouter.use("/auth", authRouter);
+// routes POS
 apiRouter.use("/categories", categoryRouter);
 apiRouter.use("/users", userRouter);
 apiRouter.use("/products", productRouter);
