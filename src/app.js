@@ -34,7 +34,8 @@ app.use(express.json());
 apiRouter.use("/auth", authRouter);
 apiRouter.use("/categories", categoryRouter);
 apiRouter.use("/users", userRouter);
-apiRouter.use("/products", productRouter), apiRouter.use("/sales", saleRouter);
+apiRouter.use("/products", productRouter);
+apiRouter.use("/sales", saleRouter);
 
 app.use("/api/v1", apiRouter);
 
